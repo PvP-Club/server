@@ -24,7 +24,7 @@ ms:set_string("minetestc", "#FFFF00")
 ms:set_string("j45c", "#FFFF00")
 ms:set_string("RUBIUSOMG11c", "#FFFF00")
 
---grean team color
+--green team color
 ms:set_string("Elvis26c" , "#00FF3C")
 ms:set_string("DiamondPlanec", "#00FF3C")
 ms:set_string("gameitc", "#00FF3C")
