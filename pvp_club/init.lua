@@ -25,10 +25,10 @@ ms:set_string("j45c", "#FFFF00")
 ms:set_string("RUBIUSOMG11c", "#FFFF00")
 
 --grean team color
-ms:set_string("Elvis26c" , "#00B00E")
-ms:set_string("DiamondPlanec", "#00B00E")
-ms:set_string("gameitc", "#00B00E")
-ms:set_string("endc", "#00B00E")
+ms:set_string("Elvis26c" , "#00FF3C")
+ms:set_string("DiamondPlanec", "#00FF3C")
+ms:set_string("gameitc", "#00FF3C")
+ms:set_string("endc", "#00FF3C")
 
 minetest.register_on_prejoinplayer(function(name)
         if table.indexof(players, name) >= 1 then
@@ -44,7 +44,7 @@ mt.register_on_dieplayer(function (player, reason)
         hunter = reason.object:get_player_name()
         prey = player:get_player_name()
         if ms:get_string(hunter.."c") then
-            mt.chat_send_all(mt.colorize(ms:get_string(hunter.."c"), hunter)..mt.colorize("#FF0000", " killed ")..mt.colorize(ms:get_string(prey.."c"), prey)) 
+            mt.chat_send_all(mt.colorize(ms:get_string(hunter.."c"), hunter)..mt.colorize("#FF0000", " has killed ")..mt.colorize(ms:get_string(prey.."c"), prey)) 
         end
         hunter = nil
         prey = nil
