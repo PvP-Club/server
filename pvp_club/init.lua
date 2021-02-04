@@ -15,7 +15,7 @@ local teams = {
 --blue team color
 ms:set_string("TenPlusTwoc", "#0000FF")
 ms:set_string("realygc", "#0000FF")
-ms:set_string("Darkf4antom","#0000FF")
+ms:set_string("Darkf4antomc","#0000FF")
 ms:set_string("smugler5c", "#0000FF")
 
 --yellow team color
