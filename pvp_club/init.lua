@@ -77,3 +77,9 @@ mt.register_on_punchplayer(function (player, hitter,time_from_last_punch,tool_ca
         end
     end
 end)
+
+minetest.register_on_joinplayer(function(player)
+	player:hud_set_flags({
+		minimap = false,
+	})
+end)
