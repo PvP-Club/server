@@ -104,7 +104,8 @@ mt.register_chatcommand("kills", {
                 local kills = ms:get_string(param.."kills")
                 return true, "Player "..param.." has "..kills.." kills."
             else
-                
+                local kills = ms:get_string(name.."kills")
+                return true, "Player "..name.." has "..kills.." kills."
             end
     end
     end,
@@ -128,4 +129,3 @@ mt.register_chatcommand("deaths", {
         end
     end,
 })
-
