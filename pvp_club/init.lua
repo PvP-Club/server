@@ -107,7 +107,7 @@ mt.register_chatcommand("kills", {
                 local kills = ms:get_string(name.."kills")
                 return true, "Player "..name.." has "..kills.." kills."
             end
-    end
+        end
     end,
 })
 
