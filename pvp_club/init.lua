@@ -122,6 +122,10 @@ mt.register_chatcommand("deaths", {
             else
                 return true, "No such player called "..param.."."
             end
+        else
+            local deaths = ms:get_string(name.."deaths")
+            return true, "Player "..name.." has "..deaths.." deaths."
         end
     end,
 })
+
