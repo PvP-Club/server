@@ -79,3 +79,49 @@ mt.register_on_punchplayer(function (player, hitter,time_from_last_punch,tool_ca
         end
     end
 end)
+
+--chat commands
+mt.register_on_newplayer(function (player)
+    local name = player:get_player_name()
+    ms:set_string(name.."kills", tostring(0))
+    ms:set_string(name.."deaths", tostring(0))
+end)
+
+mt.register_on_dieplayer(function (player, reason)
+    local kills = tonumber(ms:get_string(reason.object:get_player_name().."kills"))
+    local deaths = tonumber(ms:get_string(player:get_player_name().."deaths"))
+    ms:set_string(reason.object:get_player_name().."kills", tostring(kills + 1))
+    ms:set_string(player:get_player_name().."deaths", tostring(deaths + 1))
+end)
+
+mt.register_chatcommand("kills", {
+    privs = {
+        interact = true,
+    },
+    func = function(name, param)
+        if param ~= nil then
+            if table.indexof(players, param) >= 1 then
+                local kills = ms:get_string(param.."kills")
+                return true, "Player "..param.." has "..kills.." kills."
+            else
+                
+            end
+    end
+    end,
+})
+
+mt.register_chatcommand("deaths", {
+    privs = {
+        interact = true,
+    },
+    func = function(name, param)
+        if param ~= nil then
+            if table.indexof(players, param) >= 1 then
+                local deaths = ms:get_string(param.."deaths")
+                return true, "Player "..param.." has "..deaths.." deaths."
+            else
+                return true, "No such player called "..param.."."
+            end
+        end
+    end,
+})
