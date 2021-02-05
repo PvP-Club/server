@@ -1,4 +1,4 @@
-local greens = {"DiamondPlane", "Elvis26", "gameit", "end", "Skyisblue"}
+local greens = {"DiamondPlane", "Elvis26", "gameit", "end", "Skyisblue", "LuaFrank"}
 
 minetest.register_on_joinplayer(function(player)
   for _, n in pairs(greens) do
