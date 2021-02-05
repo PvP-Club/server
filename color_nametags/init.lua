@@ -14,7 +14,7 @@ local blues = {"Darkf4antom", "TenPlusTwo", "realyg", "smugler5"}
 minetest.register_on_joinplayer(function(player)
   for _, n in pairs(blues) do
     if player:get_player_name() == n then
-      player:set_nametag_attributes({color = "blue"})
+      player:set_nametag_attributes({color = "#0000FF"})
       break
     end
   end
