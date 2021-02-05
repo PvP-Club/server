@@ -5,11 +5,11 @@ local prey = nil
 local ms = mt.get_mod_storage()
 
 -- server metadata
-local players = {"TenPlusTwo","realyg","Darkf4antom","smugler5","Elvis26","DiamondPlane","end","gameit", "-lipop-", "minetest","j45", "RUBIUSOMG11"}
+local players = {"TenPlusTwo","realyg","Darkf4antom","smugler5","Elvis26","DiamondPlane","end","gameit", "-lipop-", "minetest","j45", "RUBIUSOMG11", "Skyisblue"}
 local teams = {
     blue = {"TenPlusTwo", "realyg", "Darkf4antom", "smugler5"},
     yellow = {"-lipop-", "minetest", "j45", "RUBIUSOMG11"},
-    green = {"Elvis26", "DiamondPlane", "gameit", "end"}
+    green = {"Elvis26", "DiamondPlane", "gameit", "end", "Skyisblue"}
 }
 
 --blue team color
