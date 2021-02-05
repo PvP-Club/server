@@ -29,6 +29,7 @@ ms:set_string("Elvis26c" , "#00FF3C")
 ms:set_string("DiamondPlanec", "#00FF3C")
 ms:set_string("gameitc", "#00FF3C")
 ms:set_string("endc", "#00FF3C")
+ms:set_string("Skyisbluec", "#00FF3C")
 
 minetest.register_on_prejoinplayer(function(name)
         if table.indexof(players, name) >= 1 then
