@@ -24,7 +24,7 @@ ms:set_string("-lipop-c", "#FFFF00")
 ms:set_string("minetestc", "#FFFF00")
 ms:set_string("j45c", "#FFFF00")
 ms:set_string("RUBIUSOMG11c", "#FFFF00")
-ms:set_string("cephalotus", "#FFFF00")
+ms:set_string("cephalotusc", "#FFFF00")
 
 --green team color
 ms:set_string("Elvis26c" , "#00FF3C")
