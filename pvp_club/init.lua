@@ -5,11 +5,11 @@ local prey = nil
 local ms = mt.get_mod_storage()
 
 -- server metadata
-local players = {"TenPlusTwo","realyg","Darkf4antom","smugler5","Elvis26","DiamondPlane","end","gameit", "-lipop-", "minetest","j45", "RUBIUSOMG11"}
+local players = {"TenPlusTwo","realyg","Darkf4antom","smugler5","Elvis26","DiamondPlane","end","gameit", "-lipop-", "minetest","j45", "RUBIUSOMG11", "Skyisblue", "KitoCat"}
 local teams = {
-    blue = {"TenPlusTwo", "realyg", "Darkf4antom", "smugler5"},
+    blue = {"TenPlusTwo", "realyg", "Darkf4antom", "smugler5", "KitoCat"},
     yellow = {"-lipop-", "minetest", "j45", "RUBIUSOMG11"},
-    green = {"Elvis26", "DiamondPlane", "gameit", "end"}
+    green = {"Elvis26", "DiamondPlane", "gameit", "end", "Skyisblue"}
 }
 
 --blue team color
@@ -17,6 +17,7 @@ ms:set_string("TenPlusTwoc", "#0000FF")
 ms:set_string("realygc", "#0000FF")
 ms:set_string("Darkf4antomc","#0000FF")
 ms:set_string("smugler5c", "#0000FF")
+ms:set_string("KitoCatc", "#0000FF")
 
 --yellow team color
 ms:set_string("-lipop-c", "#FFFF00")
@@ -29,6 +30,7 @@ ms:set_string("Elvis26c" , "#00FF3C")
 ms:set_string("DiamondPlanec", "#00FF3C")
 ms:set_string("gameitc", "#00FF3C")
 ms:set_string("endc", "#00FF3C")
+ms:set_string("Skyisbluec", "#00FF3C")
 
 minetest.register_on_prejoinplayer(function(name)
         if table.indexof(players, name) >= 1 then
