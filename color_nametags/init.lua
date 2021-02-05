@@ -25,7 +25,7 @@ local yellows = {"j45", "-lipop-", "RUBIUSOMG11", "minetest"}
 minetest.register_on_joinplayer(function(player)
   for _, n in pairs(yellows) do
     if player:get_player_name() == n then
-      player:set_nametag_attributes({color = "yellow"})
+      player:set_nametag_attributes({color = "#FFFF00"})
       break
     end
   end
