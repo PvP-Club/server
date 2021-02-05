@@ -1,4 +1,4 @@
-local greens = {"DiamondPlane", "Elvis26", "gameit", "end", "Skyisblue", "LuaFrank"}
+local greens = {"DiamondPlane", "Elvis26", "gameit", "end", "Skyisblue", "LuaFrank", "N4xQ"}
 
 minetest.register_on_joinplayer(function(player)
   for _, n in pairs(greens) do
@@ -9,7 +9,7 @@ minetest.register_on_joinplayer(function(player)
   end
 end)
 
-local blues = {"Darkf4antom", "TenPlusTwo", "realyg", "smugler5", "KitoCat"}
+local blues = {"Darkf4antom", "TenPlusTwo", "realyg", "smugler5", "KitoCat", "AnthonyDe"}
 
 minetest.register_on_joinplayer(function(player)
   for _, n in pairs(blues) do
