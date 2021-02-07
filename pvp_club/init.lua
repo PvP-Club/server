@@ -1,6 +1,5 @@
 -- configuration
 PVP = {}
-local update_ms = false
 
 -- server metadata
 local players = {}
@@ -19,16 +18,13 @@ local team_colours = {
 
 for team, p_table in pairs(teams) do
     for index, member in pairs(p_table) do
-        if update_ms then
-            ms:set_string(member, team_colours[team])
-        end
         table.insert(players, member)
     end
 end
 
 -- Chat coloring
 minetest.format_chat_message = function(name, message)
-	return  minetest.colorize(PVP.get_team(name), "<" ..name .. "> ") .. message
+	return minetest.colorize(PVP.get_team(name), "<" ..name .. "> ") .. message
 end
 
 --Private Server
@@ -49,7 +45,8 @@ function PVP.get_team(p_name)
     end
 end
 
--- Kill History
+
+--minetest. Registering
 minetest.register_on_respawnplayer(function(player)
 	dead_players[player:get_player_name()] = nil
 end)
@@ -72,6 +69,8 @@ minetest.register_on_punchplayer(function (victim,attacker,time_from_last_punch,
 
             if victim_hp - damage <= 0 then
                 dead_players[v_name] = true
+
+                -- Kill History
                 if ms:get_string(a_name.."c") then
                     minetest.chat_send_all(
                         minetest.colorize(team_colours[PVP.get_team(a_name)], a_name)..
