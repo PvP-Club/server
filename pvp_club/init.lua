@@ -6,9 +6,9 @@ local update_ms = false
 local players = {}
 local dead_players = {}
 local teams = {
-    blue = {"TenPlusTwo", "realyg", "Darkf4antom", "smugler5", "KitoCat", "AnthonyDe"},
-    yellow = {"-lipop-", "minetest", "j45", "RUBIUSOMG11", "cephalotus"},
-    green = {"Elvis26", "DiamondPlane", "gameit", "end", "Skyisblue"}
+    blue = {"TenPlusTwo", "realyg", "Darkf4antom", "KitoCat", "AnthonyDe", "SoulSeeker"},
+    yellow = {"-lipop-", "minetest", "j45", "RUBIUSOMG11", "cephalotus", "Amine35", "realyg"},
+    green = {"Elvis26", "DiamondPlane", "gameit", "end", "Skyisblue", "-CrocMoney-", "N4xQ", "LuaFrank"}
 }
 
 local team_colours = {
