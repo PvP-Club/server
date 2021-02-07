@@ -71,13 +71,11 @@ minetest.register_on_punchplayer(function (victim,attacker,time_from_last_punch,
                 dead_players[v_name] = true
 
                 -- Kill History
-                if ms:get_string(a_name.."c") then
-                    minetest.chat_send_all(
-                        minetest.colorize(team_colours[PVP.get_team(a_name)], a_name)..
-                        minetest.colorize("#FF0000", " has killed ")..
-                        minetest.colorize(team_colours[PVP.get_team(v_name)], v_name)
-                    )
-                end
+                minetest.chat_send_all(
+                    minetest.colorize(team_colours[PVP.get_team(a_name)], a_name)..
+                    minetest.colorize("#FF0000", " has killed ")..
+                    minetest.colorize(team_colours[PVP.get_team(v_name)], v_name)
+                )
                 return false
             end
             victim:set_hp(victim_hp - damage)
