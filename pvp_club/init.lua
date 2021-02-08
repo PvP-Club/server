@@ -5,7 +5,7 @@ PVP = {}
 local players = {}
 local dead_players = {}
 local teams = {
-    blue = {"TenPlusTwo", "realyg", "Darkf4antom", "KitoCat", "AnthonyDe", "SoulSeeker"},
+    blue = {"TenPlusTwo", "realyg", "Darkf4antom", "KitoCat", "AnthonyDe", "SoulSeeker", "JediKnight"},
     yellow = {"-lipop-", "minetest", "j45", "RUBIUSOMG11", "cephalotus", "Amine35", "realyg"},
     green = {"Elvis26", "DiamondPlane", "gameit", "end", "Skyisblue", "-CrocMoney-", "N4xQ", "LuaFrank"}
 }
@@ -24,7 +24,7 @@ end
 
 -- Chat coloring
 minetest.format_chat_message = function(name, message)
-	return minetest.colorize(PVP.get_team(name), "<" ..name .. "> ") .. message
+	return minetest.colorize(team_colours[PVP.get_team(name)], "<" ..name .. "> ") .. message
 end
 
 --Private Server
