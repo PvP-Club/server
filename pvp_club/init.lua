@@ -3,6 +3,7 @@ mt = minetest
 ms = mt.get_mod_storage()
 PVP = {}
 PVP.players = {}
+PVP.team_chat_enabled = {}
 PVP.team_colours = {
     blue = "#0000FF",
     yellow = "#FFFF00",
@@ -24,7 +25,14 @@ end
 
 -- Chat coloring
 mt.format_chat_message = function(name, message)
-	return mt.colorize(PVP.team_colour(name), "<" ..name .. "> ") .. message
+    if PVP.team_chat_enabled[name] == true then
+        for index, member in pairs(PVP.teams[PVP.get_team(name)]) do
+            minetest.chat_send_player(member, mt.colorize(PVP.team_colour(member), "<" ..name .. "> " .. message))
+        end
+        return ""
+    else
+	    return mt.colorize(PVP.team_colour(name), "<" ..name .. "> ") .. message
+    end
 end
 
 -- Name tag coloring
@@ -150,6 +158,23 @@ mt.register_chatcommand("deaths", {
                 return true, "Player "..mt.colorize(PVP.team_colour(param),param).." has "..deaths.." deaths."
             else
                 return true, "No such player called "..param.."."
+            end
+        end
+    end
+})
+
+mt.register_chatcommand("teamchat", {
+    privs = {
+        interact = true,
+    },
+    func = function(name, param)
+        if param ~= nil then
+            if PVP.team_chat_enabled[name] then
+                PVP.team_chat_enabled[name] = nil
+                return true, "Team chat disabled"
+            else
+                PVP.team_chat_enabled[name] = true
+                return true, "Team chat enabled"
             end
         end
     end
