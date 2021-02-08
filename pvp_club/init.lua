@@ -85,20 +85,20 @@ minetest.register_on_punchplayer(function (victim,attacker,time_from_last_punch,
 end)
 
 --chat commands
-mt.register_on_newplayer(function (player)
+minetest.register_on_newplayer(function (player)
     local name = player:get_player_name()
     ms:set_string(name.."kills", tostring(0))
     ms:set_string(name.."deaths", tostring(0))
 end)
 
-mt.register_on_dieplayer(function (player, reason)
+minetest.register_on_dieplayer(function (player, reason)
     local kills = tonumber(ms:get_string(reason.object:get_player_name().."kills"))
     local deaths = tonumber(ms:get_string(player:get_player_name().."deaths"))
     ms:set_string(reason.object:get_player_name().."kills", tostring(kills + 1))
     ms:set_string(player:get_player_name().."deaths", tostring(deaths + 1))
 end)
 
-mt.register_chatcommand("kills", {
+minetest.register_chatcommand("kills", {
     privs = {
         interact = true,
     },
@@ -117,7 +117,7 @@ mt.register_chatcommand("kills", {
     end
 })
 
-mt.register_chatcommand("deaths", {
+minetest.register_chatcommand("deaths", {
     privs = {
         interact = true,
     },
