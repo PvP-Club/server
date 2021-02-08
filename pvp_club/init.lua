@@ -13,7 +13,7 @@ local teams = {
 local team_colours = {
     blue = "#0000FF",
     yellow = "#FFFF00",
-    green = "#00FF3C"
+    green = "#64f20b"
 }
 
 for team, p_table in pairs(teams) do
