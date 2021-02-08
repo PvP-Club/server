@@ -27,6 +27,18 @@ mt.format_chat_message = function(name, message)
 	return mt.colorize(PVP.team_colour(name), "<" ..name .. "> ") .. message
 end
 
+-- Name tag coloring
+minetest.register_on_joinplayer(function(player)
+    for team, p_table in pairs(PVP.teams) do
+        for index, member in pairs(p_table) do
+            if player:get_player_name() == member then
+                player:set_nametag_attributes({color = PVP.team_colour(member)})
+                return
+            end
+        end
+    end
+end)
+
 --Private Server
 mt.register_on_prejoinplayer(function(name)
     if table.indexof(PVP.players, name) >= 1 then
