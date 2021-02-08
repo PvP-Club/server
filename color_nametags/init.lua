@@ -9,7 +9,7 @@ minetest.register_on_joinplayer(function(player)
   end
 end)
 
-local blues = {"Darkf4antom", "TenPlusTwo", "smugler5", "KitoCat", "AnthonyDe", "SoulSeeker"}
+local blues = {"Darkf4antom", "TenPlusTwo", "smugler5", "KitoCat", "AnthonyDe", "SoulSeeker", "JediKnight"}
 
 minetest.register_on_joinplayer(function(player)
   for _, n in pairs(blues) do
