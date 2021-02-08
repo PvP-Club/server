@@ -88,7 +88,7 @@ mt.register_on_punchplayer(function (victim,attacker,time_from_last_punch,tool_c
 end)
 
 --chat commands
-mt.register_on_newplayer(function (player)
+minetest.register_on_newplayer(function (player)
     local name = player:get_player_name()
     ms:set_string(name.."kills", tostring(0))
     ms:set_string(name.."deaths", tostring(0))
