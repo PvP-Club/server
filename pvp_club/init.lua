@@ -85,6 +85,10 @@ minetest.register_on_punchplayer(function (victim,attacker,time_from_last_punch,
 end)
 
 --chat commands
+
+mt = minetest
+ms = minetest.get_mod_storage()
+
 minetest.register_on_newplayer(function (player)
     local name = player:get_player_name()
     ms:set_string(name.."kills", tostring(0))
