@@ -163,7 +163,7 @@ mt.register_chatcommand("deaths", {
     end
 })
 
-mt.register_chatcommand("teamchat", {
+mt.register_chatcommand("tc", {
     privs = {
         interact = true,
     },
