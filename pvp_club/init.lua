@@ -163,7 +163,7 @@ mt.register_chatcommand("deaths", {
     end
 })
 
-mt.register_chatcommand("tc", {
+mt.register_chatcommand("tchat", {
     privs = {
         interact = true,
     },
@@ -180,27 +180,19 @@ mt.register_chatcommand("tc", {
     end
 })
 
-mt.register_chatcommand("green", {
-   description = "You can look green team players.",
-   func = function(name)
-				minetest.chat_send_player(name,
-                                                minetest.colorize("#64f20b", "[Green Team] = Elvis26, DiamondPlane, gameit, end, Skyisblue, -CrocMoney-, N4xQ, LuaFrank."))
-       end
-})
-
-
-mt.register_chatcommand("yellow", {
-   description = "You can look yellow team players.",
-   func = function(name)
-				minetest.chat_send_player(name,
-                                                minetest.colorize("#FFFF00", "[Yellow Team] = -lipop-, minetest, j45, RUBIUSOMG11, cephalotus, Amine35, realyg."))
-       end
-})
- 
-mt.register_chatcommand("blue", {
-   description = "You can look blue team players.",
-   func = function(name)
-				minetest.chat_send_player(name,
-                                                minetest.colorize("#0000FF", "[Blue Team] = TenPlusTwo, Darkf4antom, KitoCat, AnthonyDe, SoulSeeker, JediKnight, Panquesito7."))
-        end
-})
+for team, p_table in pairs(PVP.teams) do
+    mt.register_chatcommand("t"..team, {
+        description = "You can look "..team.." team players.",
+        func = function(name)
+            local players_str = ""
+            for index, member in pairs(p_table) do
+                players_str = players_str .. member
+                if index < #p_table then
+                    players_str = players_str .. ", "
+                end
+            end
+            minetest.chat_send_player(name,
+            minetest.colorize(PVP.team_colours[team], "["..team.." team] = "..players_str))
+         end
+     })
+end
