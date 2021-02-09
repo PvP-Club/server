@@ -184,7 +184,7 @@ mt.register_chatcommand("green", {
    description = "You can look green team players.",
    func = function(name)
 				minetest.chat_send_player(name,
-                                                minetest.colorize("#64f20b", "[Green Team] = Elvis26, DiamondPlane, gameit, Skyisblue, -CrocMoney-, N4xQ, LuaFrank."))
+                                                minetest.colorize("#64f20b", "[Green Team] = Elvis26, DiamondPlane, gameit, end, Skyisblue, -CrocMoney-, N4xQ, LuaFrank."))
        end
 })
 
