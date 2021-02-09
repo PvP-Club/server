@@ -10,7 +10,7 @@ PVP.team_colours = {
     green = "#64f20b"
 }
 PVP.teams = {
-    blue = {"TenPlusTwo", "realyg", "Darkf4antom", "KitoCat", "AnthonyDe", "SoulSeeker", "JediKnight"},
+    blue = {"TenPlusTwo", "realyg", "Darkf4antom", "KitoCat", "AnthonyDe", "SoulSeeker", "JediKnight", "Panquesito7"},
     yellow = {"-lipop-", "minetest", "j45", "RUBIUSOMG11", "cephalotus", "Amine35", "realyg"},
     green = {"Elvis26", "DiamondPlane", "gameit", "end", "Skyisblue", "-CrocMoney-", "N4xQ", "LuaFrank"}
 }
@@ -178,4 +178,29 @@ mt.register_chatcommand("tc", {
             end
         end
     end
+})
+
+mt.register_chatcommand("green", {
+   description = "You can look green team players.",
+   func = function(name)
+				minetest.chat_send_player(name,
+                                                minetest.colorize("#64f20b", "[Green Team] = Elvis26, DiamondPlane, gameit, Skyisblue, -CrocMoney-, N4xQ, LuaFrank."))
+       end
+})
+
+
+mt.register_chatcommand("yellow", {
+   description = "You can look yellow team players.",
+   func = function(name)
+				minetest.chat_send_player(name,
+                                                minetest.colorize("#FFFF00", "[Yellow Team] = -lipop-, minetest, j45, RUBIUSOMG11, cephalotus, Amine35, realyg."))
+       end
+})
+ 
+mt.register_chatcommand("blue", {
+   description = "You can look blue team players.",
+   func = function(name)
+				minetest.chat_send_player(name,
+                                                minetest.colorize("#0000FF", "[Blue Team] = TenPlusTwo, Darkf4antom, KitoCat, AnthonyDe, SoulSeeker, JediKnight, Panquesito7."))
+        end
 })
