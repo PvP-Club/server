@@ -206,4 +206,4 @@ minetest.register_on_joinplayer(function(player, n)
       player:set_nametag_attributes({text = "" .. n .. " (Owner)"})
      end
   end
-end)
+ end)
