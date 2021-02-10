@@ -196,3 +196,14 @@ for team, p_table in pairs(PVP.teams) do
          end
      })
 end
+
+-- Owners
+local owners = {"DiamondPlane", "gameit", "Elvis26"}
+
+minetest.register_on_joinplayer(function(player, n)
+  for _, n in pairs(owners) do
+    if player:get_player_name() == n then
+      player:set_nametag_attributes({text = "" .. n .. " (Owner)"})
+     end
+  end
+end)
