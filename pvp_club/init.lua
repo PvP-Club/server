@@ -52,7 +52,7 @@ mt.register_on_prejoinplayer(function(name)
     if table.indexof(PVP.players, name) >= 1 then
         mt.log("Welcome ".. name.."!")
     else
-        return "Sorry, this is a private server!"
+        return "You are not whitelisted! Ask for add you to whitelist in discord: https://discord.gg/mwycCNnBtv"
     end
  end)
 
