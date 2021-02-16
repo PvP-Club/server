@@ -247,6 +247,24 @@ mt.register_chatcommand("tchat", {
     end
 })
 
+mt.register_chatcommand("rplayer", {
+    privs = {
+        server = true,
+    },
+    description = "Used to clear player stats. /rplayer <name>",
+    func = function(name, param)
+        if param == "" then
+            return true, "Try: \n/rplayer <name>"
+        end
+        if PVP.get_team(param) then
+            ms:set_string(param.."kills", 0)
+            ms:set_string(param.."deaths", 0)
+            return true, param.."'s stats have been reset."
+        end
+        return true, "["..param.."] is not a player!"
+    end
+})
+
 for team, p_table in pairs(PVP.teams) do
     mt.register_chatcommand("t"..team, {
         description = "You can look "..team.." team players.",
