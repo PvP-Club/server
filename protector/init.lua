@@ -559,7 +559,7 @@ minetest.register_node("protector:protect2", {
 
 	on_rightclick = function(pos, node, clicker, itemstack)
 
-		if minetest.is_protected(pos, puncher:get_player_name()) then
+		if minetest.is_protected(pos, clicker:get_player_name()) then
 			return
 		end
 
