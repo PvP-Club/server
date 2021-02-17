@@ -1,6 +1,6 @@
 -- configuration
-mt = minetest
-ms = mt.get_mod_storage()
+local mt = minetest
+local ms = mt.get_mod_storage()
 PVP = {}
 PVP.players = {}
 PVP.team_chat_enabled = {}
