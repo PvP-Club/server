@@ -27,6 +27,7 @@ PVP.spawn = {
 
 local dead_players = {}
 local immune_players = {}
+local respawn_message = {}
 
 for team, p_table in pairs(PVP.teams) do
     for index, member in pairs(p_table) do
@@ -122,8 +123,13 @@ end
 
 --minetest. Registering
 mt.register_on_respawnplayer(function(player)
-	dead_players[player:get_player_name()] = nil
-    immune_players[player:get_player_name()] = PVP.spawn.immunity_time
+    local name = player:get_player_name()
+	dead_players[name] = nil
+    immune_players[name] = PVP.spawn.immunity_time
+    if respawn_message[name] then
+        mt.chat_send_all(respawn_message[name])
+        respawn_message[name] = nil
+    end
     return true
 end)
 
@@ -163,12 +169,9 @@ mt.register_on_punchplayer(function (victim,attacker,time_from_last_punch,tool_c
             dead_players[v_name] = true
 
             -- Kill History
-            mt.chat_send_all(
-                mt.colorize(PVP.team_color(a_name), a_name)..
-                mt.colorize("#FF0000", " has killed ")..
-                mt.colorize(PVP.team_color(v_name), v_name)
-            )
-            return false
+            respawn_message[v_name] = mt.colorize(PVP.team_color(a_name), a_name)..
+                                      mt.colorize("#FF0000", " has killed ")..
+                                      mt.colorize(PVP.team_color(v_name), v_name)
         end
         victim:set_hp(victim_hp - damage)
     end
