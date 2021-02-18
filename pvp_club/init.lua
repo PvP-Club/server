@@ -171,7 +171,7 @@ mt.register_on_punchplayer(function (victim,attacker,time_from_last_punch,tool_c
             -- Kill History
             respawn_message[v_name] = mt.colorize(PVP.team_color(a_name), a_name)..
                                       mt.colorize("#FF0000", " has killed ")..
-                                      t.colorize(PVP.team_color(v_name), v_name)
+                                      mt.colorize(PVP.team_color(v_name), v_name)
         end
         victim:set_hp(victim_hp - damage)
     end
