@@ -8,7 +8,7 @@ PVP.team_colors = {
     blue = "#0000FF",
     yellow = "#FFFF00",
     green = "#64f20b",
-    red = "#d63737"
+    red = "#e32727"
 }
 PVP.teams = {
     red = {"clownwolf"},
