@@ -7,7 +7,7 @@ PVP.team_chat_enabled = {}
 PVP.team_colors = {
     blue = "#0000FF",
     yellow = "#FFFF00",
-    green = "#64f20b"
+    green = "#64f20b",
     red = "#d63737"
 }
 PVP.teams = {
