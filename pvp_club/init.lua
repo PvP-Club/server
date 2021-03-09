@@ -92,6 +92,9 @@ end)
 mt.register_on_prejoinplayer(function(name)
     if table.indexof(PVP.players, name) >= 1 then
         mt.log("Welcome ".. name.."!")
+        local player = minetest.get_player_by_name(name)
+        player:hud_set_hotbar_image("gui_hotbar_" .. PVP.team_color(name) .. ".png")
+        player:hud_set_hotbar_selected_image("gui_hotbar_selected_" .. PVP.team_color(name) .. ".png")
     else
         return "You are not whitelisted! Ask for add you to whitelist in discord: https://discord.com/invite/C2AuTuRSEb"
     end
