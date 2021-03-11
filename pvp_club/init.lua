@@ -207,7 +207,10 @@ mt.register_chatcommand("kills", {
                 local kills = tonumber(ms:get_string(name.."kills")) or 0
                 return true, "Player "..mt.colorize(PVP.team_color(name),name).." has "..kills.." kills."
             elseif table.indexof(PVP.players, param) >= 1 then
-                local kills = tonumber(ms:get_string(param.."kills")) or 0
+                local kills = 0
+		if not (ms:get_string(name.."kills")  == ("" or nil)) then
+		    deaths = tonumber(ms:get_string(name.."kills"))
+		end
                 return true, "Player "..mt.colorize(PVP.team_color(param),param).." has "..kills.." kills."
             end
             return true, "No such player called "..param.."."
@@ -222,10 +225,13 @@ mt.register_chatcommand("deaths", {
     func = function(name, param)
         if param ~= nil then
             if param == "" then
-                local deaths = tonumber(ms:get_string(name.."deaths")) or 0
+                local deaths = tonumber(ms:get_string(name.."deaths"))
                 return true, "Player "..mt.colorize(PVP.team_color(name),name).." has "..deaths.." deaths."
             elseif table.indexof(PVP.players, param) >= 1 then
-                local deaths = tonumber(ms:get_string(param.."deaths")) or 0
+                local deaths = 0
+		if not (ms:get_string(name.."deaths")  == ("" or nil)) then
+		    deaths = tonumber(ms:get_string(name.."deaths"))
+		end
                 return true, "Player "..mt.colorize(PVP.team_color(param),param).." has "..deaths.." deaths."
             else
                 return true, "No such player called "..param.."."
@@ -246,7 +252,7 @@ minetest.register_chatcommand("score", {
 	    end
             return true, minetest.colorize(PVP.team_color(param), param).." has "..score.." score."
         elseif param == ("" or nil) then
-            return true, "Player "..minetest.colorize(PVP.team_color(name), name).." has "..score.." score."
+            return true, "Player "..minetest.colorize(PVP.team_color(name), name).." has "..tostring(score).." score."
         else
             return true, "Invalid Player Name!"
         end
