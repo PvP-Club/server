@@ -240,23 +240,23 @@ mt.register_chatcommand("deaths", {
     end
 })
 
-minetest.register_chatcommand("score", {
+mt.register_chatcommand("score", {
     privs = {
         interact = true,
     },
     func = function (name, param)
         if table.indexof(PVP.players, param) >= 1 then
-	    local score = 0
-	    if not (ms:get_string(param.."score") == ("" or nil)) then
-		score = tonumber(ms:get_string(param.."score"))
-	    end
-            return true, minetest.colorize(PVP.team_color(param), param).." has "..score.." score."
-        elseif param == ("" or nil) then
-            return true, "Player "..minetest.colorize(PVP.team_color(name), name).." has "..tostring(score).." score."
-        else
-            return true, "Invalid Player Name!"
-        end
-    end
+		local score = 0
+		if ms:get_string(param.."score") == (nil or "")
+			score = tonumber(ms:get_string(param.."score"))
+		end
+		return true, "Player "..param.." has "..tostring(score).." score."
+	else if param == ("" or nil) then
+		local score = ms:get_string(name.."score")
+		return true, "Player "..name.." has "..score.." score."
+	else
+		retrun true, "Invalid Player Name!"
+    	end
 })
 
 
