@@ -248,7 +248,7 @@ minetest.register_chatcommand("score", {
         if table.indexof(PVP.players, param) >= 1 then
 	    local score = 0
 	    if not (ms:get_string(param.."score") == ("" or nil)) then
-		score = ms:get_string(param.."score")
+		score = tonumber(ms:get_string(param.."score"))
 	    end
             return true, minetest.colorize(PVP.team_color(param), param).." has "..score.." score."
         elseif param == ("" or nil) then
