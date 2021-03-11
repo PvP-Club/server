@@ -155,7 +155,7 @@ mt.register_on_punchplayer(function (victim,attacker,time_from_last_punch,tool_c
             return true
         end
         if immune_players[v_name] then
-            minetest.chat_send_player(a_name, minetest.colorize(PVP.team_color(v_name),v_name).." has just respawned!")
+            minetest.chat_send_player(a_name, minetest.colorize(PVP.team_color(v_name),v_name).." has just (re)spawned!")
             return true
         end
         if immune_players[a_name] then
