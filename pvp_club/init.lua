@@ -206,12 +206,12 @@ mt.register_chatcommand("kills", {
             if param == "" then
                 local kills = tonumber(ms:get_string(name.."kills")) or 0
                 return true, "Player "..mt.colorize(PVP.team_color(name),name).." has "..kills.." kills."
-            elseif table.indexof(PVP.players, param) >= 1 then
+            	elseif table.indexof(PVP.players, param) >= 1 then
                 local kills = 0
 		if not (ms:get_string(name.."kills")  == ("" or nil)) then
 		    deaths = tonumber(ms:get_string(name.."kills"))
 		end
-                return true, "Player "..mt.colorize(PVP.team_color(param),param).." has "..kills.." kills."
+                return true, "Player "..mt.colorize(PVP.team_color(param),param).." has "..tostring(kills).." kills."
             end
             return true, "No such player called "..param.."."
         end
@@ -232,7 +232,7 @@ mt.register_chatcommand("deaths", {
 		if not (ms:get_string(name.."deaths")  == ("" or nil)) then
 		    deaths = tonumber(ms:get_string(name.."deaths"))
 		end
-                return true, "Player "..mt.colorize(PVP.team_color(param),param).." has "..deaths.." deaths."
+                return true, "Player "..mt.colorize(PVP.team_color(param),param).." has "..tostring(deaths).." deaths."
             else
                 return true, "No such player called "..param.."."
             end
