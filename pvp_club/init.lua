@@ -247,7 +247,7 @@ mt.register_chatcommand("score", {
     func = function (name, param)
         if table.indexof(PVP.players, param) >= 1 then
 		local score = 0
-		if ms:get_string(param.."score") == (nil or "")
+		if ms:get_string(param.."score") == (nil or "") then
 			score = tonumber(ms:get_string(param.."score"))
 		end
 		return true, "Player "..param.." has "..tostring(score).." score."
