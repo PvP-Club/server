@@ -191,7 +191,7 @@ mt.register_on_dieplayer(function (player, reason)
     if reason.type == "punch" then
         local kills = tonumber(ms:get_string(reason.object:get_player_name().."kills")) or 0
         local deaths = tonumber(ms:get_string(player:get_player_name().."deaths")) or 0
-	local score = tonumber(ms:get_sting(reason.object:get_player_name().."score"))
+	local score = tonumber(ms:get_string(reason.object:get_player_name().."score")) or 0
         ms:set_string(reason.object:get_player_name().."kills", tostring(kills + 1))
         ms:set_string(player:get_player_name().."deaths", tostring(deaths + 1))
 	ms:set_sting(reason.object:get_player_name().."score", tostring(score + 10))
