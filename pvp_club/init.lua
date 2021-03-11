@@ -240,11 +240,15 @@ minetest.register_chatcommand("score", {
     },
     func = function (name, param)
         if table.indexof(PVP.players, param) >= 1 then
-            return true, minetest.colorize(PVP.team_color(param), param).." has "..ms:get_string(param.."score").." score."
+	    local score = 0
+	    if not (ms:get_string(param.."score") == ("" or nil)) then
+		score = ms:get_string(param.."score")
+	    end
+            return true, minetest.colorize(PVP.team_color(param), param).." has "..score.." score."
         elseif param == ("" or nil) then
-            return true, "Invalid player name!"
+            return true, "Player "..minetest.colorize(PVP.team_color(name), name).." has "..score.." score."
         else
-            return true, "Player "..minetest.colorize(PVP.team_color(name), name).." has "..ms:get_string(name.."score").." score."
+            return true, "Invalid Player Name!"
         end
     end
 })
