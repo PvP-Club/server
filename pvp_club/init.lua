@@ -211,7 +211,7 @@ mt.register_chatcommand("kills", {
             	elseif table.indexof(PVP.players, param) >= 1 then
                 local kills = 0
 		if not (ms:get_string(name.."kills")  == ("" or nil)) then
-		    deaths = tonumber(ms:get_string(name.."kills"))
+		    deaths = tonumber(ms:get_string(param.."kills"))
 		end
                 return true, "Player "..mt.colorize(PVP.team_color(param),param).." has "..tostring(kills).." kills."
             end
@@ -232,7 +232,7 @@ mt.register_chatcommand("deaths", {
             elseif table.indexof(PVP.players, param) >= 1 then
                 local deaths = 0
 		if not (ms:get_string(name.."deaths")  == ("" or nil)) then
-		    deaths = tonumber(ms:get_string(name.."deaths"))
+		    deaths = tonumber(ms:get_string(param.."deaths"))
 		end
                 return true, "Player "..mt.colorize(PVP.team_color(param),param).." has "..tostring(deaths).." deaths."
             else
@@ -291,9 +291,9 @@ mt.register_chatcommand("rplayer", {
             return true, "Try: \n/rplayer <name>"
         end
         if PVP.get_team(param) then
-            ms:set_string(param.."kills", 0)
-            ms:set_string(param.."deaths", 0)
-	    ms:set_string(param.."score", 0)
+            ms:set_string(param.."kills", tostring(0))
+            ms:set_string(param.."deaths", tostring(0))
+	    ms:set_string(param.."score", tostring(0))
             return true, param.."'s stats have been reset."
         end
         return true, "["..param.."] is not a player!"
