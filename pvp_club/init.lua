@@ -62,7 +62,7 @@ end
 
 -- Name tag coloring
 local owners = {"DiamondPlane", "gameit", "Elvis26"}
-minetest.register_on_joinplayer(function(player, n)
+mt.register_on_joinplayer(function(player, n)
     for team, p_table in pairs(PVP.teams) do
         for index, member in pairs(p_table) do
             if player:get_player_name() == member then
@@ -237,7 +237,7 @@ mt.register_chatcommand("deaths", {
 })
 
 mt.register_on_dieplayer(function (player, reason)
-    if reason.object:get_player_name() then
+    if reason.type == "punch" then
         local hunter_name = reason.object:get_player_name()
         local cs = tonumber(ms:get_string(hunter_name.."score"))
         ms:set_string(hunter_name.."score", tostring(cs+10))
