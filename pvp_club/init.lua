@@ -255,7 +255,7 @@ mt.register_chatcommand("score", {
 		local score = ms:get_string(name.."score")
 		return true, "Player "..name.." has "..score.." score."
 	else
-		retrun true, "Invalid Player Name!"
+		return true, "Invalid Player Name!"
     	end
 })
 
