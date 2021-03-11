@@ -5,12 +5,14 @@ PVP = {}
 PVP.players = {}
 PVP.team_chat_enabled = {}
 PVP.team_colors = {
+    test = "#FFFFFF"
     blue = "#0000FF",
     yellow = "#FFFF00",
     green = "#64f20b",
     red = "#e32727"
 }
 PVP.teams = {
+    test = {"Test1"}
     red = {"clownwolf", "FranzJoseph", "Beta"},
     blue = {"TenPlusTwo", "Darkf4antom", "KitoCat", "AnthonyDe", "SoulSeeker", "JediKnight", "Panquesito7", "Gladius", "liverpool", "Xenon"},
     yellow = {"-lipop-", "minetest", "j45", "RUBIUSOMG11", "cephalotus", "Amine35", "realyg", "popidog_assaillant", "Elyas_Crack"},
