@@ -257,6 +257,7 @@ mt.register_chatcommand("score", {
 	else
 		return true, "Invalid Player Name!"
     	end
+     end
 })
 
 
