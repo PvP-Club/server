@@ -169,11 +169,6 @@ mt.register_on_punchplayer(function (victim,attacker,time_from_last_punch,tool_c
 
         if victim_hp - damage <= 0 then
             dead_players[v_name] = true
-
-            -- Kill History
-            respawn_message[v_name] = mt.colorize(PVP.team_color(a_name), a_name)..
-                                      mt.colorize("#FF0000", " has killed ")..
-                                      mt.colorize(PVP.team_color(v_name), v_name)
         end
         victim:set_hp(victim_hp - damage)
     end
@@ -195,6 +190,7 @@ mt.register_on_dieplayer(function (player, reason)
         ms:set_string(reason.object:get_player_name().."kills", tostring(kills + 1))
         ms:set_string(player:get_player_name().."deaths", tostring(deaths + 1))
 	ms:set_string(reason.object:get_player_name().."score", tostring(score + 10))
+	mt.chat_send_all(mt.colorize(PVP.team_color(reason.object:get_player_name()), reason.object:get_player_name())..mt.colorize("#FF0000", " has killed ")..mt.colorize(PVP.team_color(player:get_player_name()), player:get_player_name()))
     elseif reason.type == "fall" then
         local deaths = tonumber(ms:get_string(player:get_player_name().."deaths")) or 0
         ms:set_string(player:get_player_name().."deaths", tostring(deaths + 1))
