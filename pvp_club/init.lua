@@ -293,6 +293,7 @@ mt.register_chatcommand("rplayer", {
         if PVP.get_team(param) then
             ms:set_string(param.."kills", 0)
             ms:set_string(param.."deaths", 0)
+	    ms:set_string(param.."score", 0)
             return true, param.."'s stats have been reset."
         end
         return true, "["..param.."] is not a player!"
