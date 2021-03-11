@@ -250,14 +250,15 @@ mt.register_chatcommand("score", {
 		if ms:get_string(param.."score") == (nil or "") then
 			score = tonumber(ms:get_string(param.."score"))
 		end
-		return true, "Player "..param.." has "..tostring(score).." score."
+		return true, "Player "..mt.colorize(PVP.team_color(param), param).." has "..tostring(score).." score."
 	else if param == ("" or nil) then
 		local score = ms:get_string(name.."score")
-		return true, "Player "..name.." has "..score.." score."
+		return true, "Player "..mt.colorize(PVP.team_color(name), name).." has "..score.." score"
 	else
 		return true, "Invalid Player Name!"
-    	end
-     end
+    end
+    end
+end
 })
 
 
