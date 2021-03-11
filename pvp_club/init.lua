@@ -1,6 +1,6 @@
 -- configuration
-mt = minetest
-ms = mt.get_mod_storage()
+local mt = minetest
+local ms = mt.get_mod_storage()
 PVP = {}
 PVP.players = {}
 PVP.team_chat_enabled = {}
@@ -62,7 +62,7 @@ end
 
 -- Name tag coloring
 local owners = {"DiamondPlane", "gameit", "Elvis26"}
-minetest.register_on_joinplayer(function(player, n)
+mt.register_on_joinplayer(function(player, n)
     for team, p_table in pairs(PVP.teams) do
         for index, member in pairs(p_table) do
             if player:get_player_name() == member then
@@ -111,7 +111,7 @@ function PVP.team_color(name)
     return PVP.team_colors[PVP.get_team(name)]
 end
 
-function is_inside_spawn(pos)
+local function is_inside_spawn(pos)
 	if pos.x < PVP.spawn.pos.x + PVP.spawn.r
 	and pos.x > PVP.spawn.pos.x - PVP.spawn.r
 	and pos.y < PVP.spawn.pos.y + PVP.spawn.h
@@ -155,7 +155,7 @@ mt.register_on_punchplayer(function (victim,attacker,time_from_last_punch,tool_c
             return true
         end
         if immune_players[v_name] then
-            minetest.chat_send_player(a_name, minetest.colorize(PVP.team_color(v_name),v_name).." has just respawned!")
+            minetest.chat_send_player(a_name, minetest.colorize(PVP.team_color(v_name),v_name).." has just (re)spawned!")
             return true
         end
         if immune_players[a_name] then
@@ -169,11 +169,6 @@ mt.register_on_punchplayer(function (victim,attacker,time_from_last_punch,tool_c
 
         if victim_hp - damage <= 0 then
             dead_players[v_name] = true
-
-            -- Kill History
-            respawn_message[v_name] = mt.colorize(PVP.team_color(a_name), a_name)..
-                                      mt.colorize("#FF0000", " has killed ")..
-                                      mt.colorize(PVP.team_color(v_name), v_name)
         end
         victim:set_hp(victim_hp - damage)
     end
@@ -184,14 +179,18 @@ minetest.register_on_newplayer(function (player)
     local name = player:get_player_name()
     ms:set_string(name.."kills", tostring(0))
     ms:set_string(name.."deaths", tostring(0))
+    ms:set_string(name.."score", tostring(0))
 end)
 
 mt.register_on_dieplayer(function (player, reason)
     if reason.type == "punch" then
         local kills = tonumber(ms:get_string(reason.object:get_player_name().."kills")) or 0
         local deaths = tonumber(ms:get_string(player:get_player_name().."deaths")) or 0
+	local score = tonumber(ms:get_string(reason.object:get_player_name().."score")) or 0
         ms:set_string(reason.object:get_player_name().."kills", tostring(kills + 1))
         ms:set_string(player:get_player_name().."deaths", tostring(deaths + 1))
+	ms:set_string(reason.object:get_player_name().."score", tostring(score + 10))
+	mt.chat_send_all(mt.colorize(PVP.team_color(reason.object:get_player_name()), reason.object:get_player_name())..mt.colorize("#FF0000", " has killed ")..mt.colorize(PVP.team_color(player:get_player_name()), player:get_player_name()))
     elseif reason.type == "fall" then
         local deaths = tonumber(ms:get_string(player:get_player_name().."deaths")) or 0
         ms:set_string(player:get_player_name().."deaths", tostring(deaths + 1))
@@ -207,9 +206,12 @@ mt.register_chatcommand("kills", {
             if param == "" then
                 local kills = tonumber(ms:get_string(name.."kills")) or 0
                 return true, "Player "..mt.colorize(PVP.team_color(name),name).." has "..kills.." kills."
-            elseif table.indexof(PVP.players, param) >= 1 then
-                local kills = tonumber(ms:get_string(param.."kills")) or 0
-                return true, "Player "..mt.colorize(PVP.team_color(param),param).." has "..kills.." kills."
+            	elseif table.indexof(PVP.players, param) >= 1 then
+                local kills = 0
+		if not (ms:get_string(name.."kills")  == ("" or nil)) then
+		    deaths = tonumber(ms:get_string(name.."kills"))
+		end
+                return true, "Player "..mt.colorize(PVP.team_color(param),param).." has "..tostring(kills).." kills."
             end
             return true, "No such player called "..param.."."
         end
@@ -223,17 +225,42 @@ mt.register_chatcommand("deaths", {
     func = function(name, param)
         if param ~= nil then
             if param == "" then
-                local deaths = tonumber(ms:get_string(name.."deaths")) or 0
+                local deaths = tonumber(ms:get_string(name.."deaths"))
                 return true, "Player "..mt.colorize(PVP.team_color(name),name).." has "..deaths.." deaths."
             elseif table.indexof(PVP.players, param) >= 1 then
-                local deaths = tonumber(ms:get_string(param.."deaths")) or 0
-                return true, "Player "..mt.colorize(PVP.team_color(param),param).." has "..deaths.." deaths."
+                local deaths = 0
+		if not (ms:get_string(name.."deaths")  == ("" or nil)) then
+		    deaths = tonumber(ms:get_string(name.."deaths"))
+		end
+                return true, "Player "..mt.colorize(PVP.team_color(param),param).." has "..tostring(deaths).." deaths."
             else
                 return true, "No such player called "..param.."."
             end
         end
     end
 })
+
+mt.register_chatcommand("score", {
+    privs = {
+        interact = true,
+    },
+    func = function (name, param)
+        if table.indexof(PVP.players, param) >= 1 then
+		local score = 0
+		if not (ms:get_string(param.."score") == (nil or "")) then
+			score = tonumber(ms:get_string(param.."score"))
+		end
+		return true, "Player "..mt.colorize(PVP.team_color(param), param).." has "..tostring(score).." score."
+	else if param == ("" or nil) then
+		local score = ms:get_string(name.."score")
+		return true, "Player "..mt.colorize(PVP.team_color(name), name).." has "..score.." score"
+	else
+		return true, "Invalid Player Name!"
+    end
+    end
+end
+})
+
 
 mt.register_chatcommand("tchat", {
     privs = {
@@ -296,8 +323,7 @@ mt.register_tool("pvp_club:sword", {
 		full_punch_interval = 0.1,
 		max_drop_level=1,
 		groupcaps={
-			snappy={times={[1]=0.40, [2]=0.30, [3]=0.25}, uses=35, maxlevel=3},
-                        fleshy={times={[1]=0.20, [2]=0.15, [3]=0.15}, uses=45, maxlevel=3},
+			snappy={times={[1]=0.40, [2]=0.30, [3]=0.25}, uses=35, maxlevel=3},fleshy={times={[1]=0.20, [2]=0.15, [3]=0.15}, uses=45, maxlevel=3},
 		},
 		damage_groups = {fleshy=16},
 	},
