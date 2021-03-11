@@ -252,7 +252,7 @@ minetest.register_chatcommand("score", {
         if table.indexof(PVP.players, param) >= 1 then
             return true, minetest.colorize(PVP.team_color(param), param).." has "..ms:get_string(param.."score").." score."
         elseif param == ("" or nil) then
-            return true, "Invalid Player Name!"
+            return true, "Invalid player name!"
         else
             return true, "Player "..minetest.colorize(PVP.team_color(name), name).." has "..ms:get_string(name.."score").." score."
         end
