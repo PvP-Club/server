@@ -191,8 +191,10 @@ mt.register_on_dieplayer(function (player, reason)
     if reason.type == "punch" then
         local kills = tonumber(ms:get_string(reason.object:get_player_name().."kills")) or 0
         local deaths = tonumber(ms:get_string(player:get_player_name().."deaths")) or 0
+	local score = tonumber(ms:get_sting(reason.object:get_player_name().."score"))
         ms:set_string(reason.object:get_player_name().."kills", tostring(kills + 1))
         ms:set_string(player:get_player_name().."deaths", tostring(deaths + 1))
+	ms:set_sting(reason.object:get_player_name().."score", tostring(score + 10))
     elseif reason.type == "fall" then
         local deaths = tonumber(ms:get_string(player:get_player_name().."deaths")) or 0
         ms:set_string(player:get_player_name().."deaths", tostring(deaths + 1))
@@ -235,14 +237,6 @@ mt.register_chatcommand("deaths", {
         end
     end
 })
-
-mt.register_on_dieplayer(function (player, reason)
-    if reason.type == "punch" then
-        local hunter_name = reason.object:get_player_name()
-        local cs = tonumber(ms:get_string(hunter_name.."score"))
-        ms:set_string(hunter_name.."score", tostring(cs+10))
-    end
-end)
 
 minetest.register_chatcommand("score", {
     privs = {
