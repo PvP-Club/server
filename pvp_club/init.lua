@@ -148,7 +148,7 @@ mt.register_on_punchplayer(function (victim,attacker,time_from_last_punch,tool_c
         end
 
         if is_inside_spawn(victim:get_pos()) then
-            minetest.chat_send_player(a_name, "No PvP_Club at spawn!")
+            minetest.chat_send_player(a_name, "No pvp at spawn!")
             return true
         end
 
