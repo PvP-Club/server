@@ -342,3 +342,11 @@ mt.register_craft({
         {"", "default:stick", "default:diamond"}
     }
 })
+
+minetest.register_on_joinplayer(function (ObjectRef)
+	ObjectRef:set_hp(60)
+end)
+
+minetest.register_on_respawnplayer(function (ObjectRef)
+	ObjectRef:set_hp(60)
+end)
