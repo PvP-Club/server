@@ -328,7 +328,7 @@ mt.register_tool("pvp_club:sword", {
 		groupcaps={
 			snappy={times={[1]=0.40, [2]=0.30, [3]=0.25}, uses=35, maxlevel=3},fleshy={times={[1]=0.20, [2]=0.15, [3]=0.15}, uses=45, maxlevel=3},
 		},
-		damage_groups = {fleshy=16},
+		damage_groups = {fleshy=15},
 	},
 	sound = {breaks = "default_tool_breaks"},
 })
