@@ -343,10 +343,16 @@ mt.register_craft({
     }
 })
 
-minetest.register_on_joinplayer(function (ObjectRef)
-	ObjectRef:set_hp(60)
+mt.register_on_joinplayer(function (player)
+    player:set_properties({
+        hp_max = 100,
+    })
+    player:set_hp(100)
 end)
 
-minetest.register_on_respawnplayer(function (ObjectRef)
-	ObjectRef:set_hp(60)
+mt.register_on_respawnplayer(function (player)
+    player:set_properties({
+        hp_max = 100,
+    })  
+    player:set_hp(100)
 end)
