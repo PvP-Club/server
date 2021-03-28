@@ -15,7 +15,7 @@ PvP_Club.teams = {
     test = {"Test1"},
     red = {"clownwolf", "FranzJoseph", "Beta"},
     blue = {"TenPlusTwo", "Darkf4antom", "KitoCat", "AnthonyDe", "SoulSeeker", "JediKnight", "Panquesito7", "Gladius", "liverpool", "Xenon", "smugler5"},
-    yellow = {"-lipop-", "minetest", "j45", "RUBIUSOMG11", "cephalotus", "Amine35", "realyg", "popidog_assaillant", "Elyas_Crack", "Code-Sploit"},
+    yellow = {"-lipop-", "minetest", "j45", "RUBIUSOMG11", "cephalotus", "Amine35", "realyg", "popidog_assaillant", "Elyas_Crack", "Code-Sploit", "Bigfoot45"},
     green = {"Elvis26", "DiamondPlane", "gameit", "end", "Skyisblue", "-CrocMoney-", "N4xQ", "LuaFrank"}
 }
 PvP_Club.spawn = {
@@ -84,7 +84,10 @@ mt.register_on_joinplayer(function(player, n)
                 end
                 player:set_nametag_attributes(props)
                 immune_players[player:get_player_name()] = PvP_Club.spawn.immunity_time
-                return
+                minetest.after(0,function(player)
+                    player:hud_set_hotbar_image("pvp_club_hotbar_"..PVP.get_team(player:get_player_name())..".png")
+                    player:hud_set_hotbar_selected_image("pvp_club_hotbar_selected_"..PVP.get_team(player:get_player_name())..".png")
+                end,player)
             end
         end
     end
