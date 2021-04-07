@@ -80,7 +80,7 @@ mt.register_on_joinplayer(function(player, n)
                     text = member
                 }
                 if is_owner then
-                    props.text = props.text..mt.colorize("#da1818", " (Owner)")
+                    props.text = props.text..mt.colorize("#d88119", " (Owner)")
                 end
                 player:set_nametag_attributes(props)
                 immune_players[player:get_player_name()] = PVP.spawn.immunity_time
