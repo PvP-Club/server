@@ -215,7 +215,7 @@ mt.register_chatcommand("kills", {
             	elseif table.indexof(PVP.players, param) >= 1 then
                 local kills = 0
 		if not (ms:get_string(name.."kills")  == ("" or nil)) then
-		    deaths = tonumber(ms:get_string(param.."kills"))
+		    kills = tonumber(ms:get_string(param.."kills"))
 		end
                 return true, "Player "..mt.colorize(PVP.team_color(param),param).." has "..tostring(kills).." kills."
             end
