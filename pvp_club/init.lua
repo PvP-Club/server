@@ -3,7 +3,6 @@ local mt = minetest
 local ms = mt.get_mod_storage()
 PVP = {}
 PVP.players = {}
-PVP.team_chat_enabled = {}
 PVP.team_colors = {
     test = "#FFFFFF",
     blue = "#0000FF",
@@ -52,14 +51,7 @@ end)
 
 -- Chat coloring
 mt.format_chat_message = function(name, message)
-    if PVP.team_chat_enabled[name] == true then
-        for index, member in pairs(PVP.teams[PVP.get_team(name)]) do
-            minetest.chat_send_player(member, mt.colorize(PVP.team_color(member), "<" ..name .. "> " .. message))
-        end
-        return ""
-    else
 	    return mt.colorize(PVP.team_color(name), "<" ..name .. "> ") .. message
-    end
 end
 
 -- Name tag coloring
@@ -273,14 +265,8 @@ mt.register_chatcommand("tchat", {
         interact = true,
     },
     func = function(name, param)
-        if param ~= nil then
-            if PVP.team_chat_enabled[name] then
-                PVP.team_chat_enabled[name] = nil
-                return true, "Team chat disabled"
-            else
-                PVP.team_chat_enabled[name] = true
-                return true, "Team chat enabled"
-            end
+	for index, member in pairs(PVP.teams[PVP.get_team(name)]) do
+		minetest.chat_send_player(member, mt.colorize(PVP.team_color(member), "[Team] <" ..name .. "> " .. param))
         end
     end
 })
