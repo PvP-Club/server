@@ -30,17 +30,14 @@ minetest.register_privilege("canswear", {
 })
 
 minetest.register_on_chat_message(function(name, message)
-	if not name or not message then return end
-
-	local player = minetest.get_player_by_name(name)
-	local has_canswear = minetest.check_player_privs(player, {canswear = true})
+	local has_canswear = minetest.check_player_privs(name, {canswear = true})
 
 	if has_canswear then return end
 
 	load_badwords()
 
 	for badword in pairs(badwords) do
-		if string.find(message, badword) then
+		if string.find(message, string.sub(badword, 0, string.len(badword) - 1)) then
 			minetest.chat_send_player(name, minetest.colorize("#FF0000", "No swearing!"))
 
 			return true
