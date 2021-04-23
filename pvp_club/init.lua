@@ -12,7 +12,7 @@ PVP.team_colors = {
 }
 PVP.teams = {
     test = {"Test1"},
-    red = {"clownwolf", "FranzJoseph", "Beta", "Rtx", "-cigarette-", "kitty02", "anto", "Elvis26"},
+    red = {"clownwolf", "FranzJoseph", "Beta", "Rtx", "-cigarette-", "kitty02", "anto", "Elvis26", "Arceus"},
     blue = {"TenPlusTwo", "Darkf4antom", "AnthonyDe", "SoulSeeker", "JediKnight", "Panquesito7", "Gladius", "Xenon", "liverpool", "5uper1ach"},
     yellow = {"-lipop-", "minetest", "j45", "RUBIUSOMG11", "cephalotus", "Amine35", "realyg", "popidog_assaillant", "Elyas_Crack"},
     green = {"DiamondPlane", "gameit", "end", "Skyisblue", "-CrocMoney-", "N4xQ", "LuaFrank", "Code-Sploit"}
