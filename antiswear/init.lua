@@ -39,7 +39,7 @@ minetest.register_on_chat_message(function(name, message)
 
 	load_badwords()
 
-	for _, badword in ipairs(badwords) do
+	for badword in pairs(badwords) do
 		if string.find(message, badword) then
 			minetest.chat_send_player(name, minetest.colorize("#FF0000", "No swearing!"))
 
