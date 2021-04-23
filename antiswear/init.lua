@@ -1,3 +1,7 @@
+--[[
+ANTISWEAR
+]]--
+
 local badwords = {}
 local worldpath = minetest.get_worldpath()
 
