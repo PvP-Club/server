@@ -307,32 +307,6 @@ for team, p_table in pairs(PVP.teams) do
      })
 end
 
--- Sword
-
-mt.register_tool("pvp_club:sword", {
-    description = "PC Sword",
-    inventory_image = "pc_sword.png",
-	tool_capabilities = {
-		full_punch_interval = 0.1,
-		max_drop_level=1,
-		groupcaps={
-			snappy={times={[1]=0.40, [2]=0.30, [3]=0.25}, uses=35, maxlevel=3},fleshy={times={[1]=0.20, [2]=0.15, [3]=0.15}, uses=45, maxlevel=3},
-		},
-		damage_groups = {fleshy=16},
-	},
-	sound = {breaks = "default_tool_breaks"},
-})
-
-mt.register_craft({
-    type = "shaped",
-    output = "pvp_club:sword",
-    recipe = {
-        {"", "default:mese", ""},
-        {"", "default:mese", ""},
-        {"", "default:stick", "default:diamond"}
-    }
-})
-
 mt.register_on_joinplayer(function (player)
     player:set_properties({
         hp_max = 100,
