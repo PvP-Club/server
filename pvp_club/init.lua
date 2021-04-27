@@ -320,3 +320,26 @@ mt.register_on_respawnplayer(function (player)
     })  
     player:set_hp(100)
 end)
+
+minetest.register_chatcommand("skills", {
+    privs = {
+        interact = true,
+    },
+    func = function (name, param)
+        local kills = tostring(0)
+        local deaths = tostring(0)
+        local score = tostring(0)
+
+        if ms:get_string(name.."kills") ~= (nil or "") then
+            kills = ms:get_string(name.."kills")
+        end
+        if ms:get_string(name.."deaths") ~= (nil or "") then
+            deaths = ms:get_string(name.."deaths")
+        end
+        if ms:get_string(name.."score") ~= (nil or "") then
+            score = ms:get_string(name.."score")
+        end
+
+        minetest.chat_send_player(name, "Skills of "..minetest.colorize(PVP.team_color(name), name).." are:\nKills: "..kills.."\nDeaths: "..deaths.."\nSocre: "..score)
+    end
+});
