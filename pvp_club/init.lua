@@ -321,7 +321,7 @@ mt.register_on_respawnplayer(function (player)
     player:set_hp(100)
 end)
 
-minetest.register_chatcommand("skills", {
+minetest.register_chatcommand("stats", {
     privs = {
         interact = true,
     },
@@ -340,6 +340,6 @@ minetest.register_chatcommand("skills", {
             score = ms:get_string(name.."score")
         end
 
-        minetest.chat_send_player(name, "Skills of "..minetest.colorize(PVP.team_color(name), name).." are:\nKills: "..kills.."\nDeaths: "..deaths.."\nSocre: "..score)
+        minetest.chat_send_player(name, "Stats of "..minetest.colorize(PVP.team_color(name), name).." are:\nKills: "..kills.."\nDeaths: "..deaths.."\nSocre: "..score)
     end
 });
