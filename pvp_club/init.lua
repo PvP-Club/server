@@ -350,7 +350,7 @@ minetest.register_chatcommand("stats", {
                 score = ms:get_string(param.."score")
             end
 
-            return minetest.chat_send_player(name, "Stats of "..minetest.colorize(PVP.team_color(param), param).." are:\nKills: "..kills.."\nDeaths: "..deaths.."\nSocre: "..score)
+            return minetest.chat_send_player(name, "Stats of "..minetest.colorize(PVP.team_color(param), param).." are:\nKills: "..kills.."\nDeaths: "..deaths.."\Score: "..score)
         end
 
         local kills = tostring(0)
@@ -367,6 +367,6 @@ minetest.register_chatcommand("stats", {
             score = ms:get_string(name.."score")
         end
 
-        minetest.chat_send_player(name, "Stats of "..minetest.colorize(PVP.team_color(name), name).." are:\nKills: "..kills.."\nDeaths: "..deaths.."\nSocre: "..score)
+        minetest.chat_send_player(name, "Stats of "..minetest.colorize(PVP.team_color(name), name).." are:\nKills: "..kills.."\nDeaths: "..deaths.."\Score: "..score)
     end
 });
