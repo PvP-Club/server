@@ -333,7 +333,7 @@ minetest.register_chatcommand("stats", {
         if param ~= ("" or nil) then
 
             if not table.includes(PVP.players, param) then
-                return true,"Invalid Player Name!"
+                return true,"Invalid player name."
             end
 
             local kills = tostring(0)
