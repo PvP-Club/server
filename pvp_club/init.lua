@@ -28,6 +28,10 @@ PVP.spawn = {
     },
 }
 
+function table.includes(tab, val)
+    return table.indexof(tab, val) >= 1
+end
+
 local dead_players = {}
 local immune_players = {}
 local respawn_message = {}
@@ -317,6 +321,52 @@ end)
 mt.register_on_respawnplayer(function (player)
     player:set_properties({
         hp_max = 100,
-    })  
+    })
     player:set_hp(100)
 end)
+
+minetest.register_chatcommand("stats", {
+    privs = {
+        interact = true,
+    },
+    func = function (name, param)
+        if param ~= ("" or nil) then
+
+            if not table.includes(PVP.players, param) then
+                return true,"Invalid player name."
+            end
+
+            local kills = tostring(0)
+            local deaths = tostring(0)
+            local score = tostring(0)
+
+            if ms:get_string(param.."kills") ~= "" or ms:get_string(param.."kills") ~= nil then
+                kills = ms:get_string(param.."kills")
+            end
+            if ms:get_string(param.."deaths") ~= "" or ms:get_string(param.."deaths") ~= nil then
+                deaths = ms:get_string(param.."deaths")
+            end
+            if ms:get_string(param.."score") ~= "" or ms:get_string(param.."score") ~= nil then
+                score = ms:get_string(param.."score")
+            end
+
+            return minetest.chat_send_player(name, "Stats of "..minetest.colorize(PVP.team_color(param), param).." are:\nKills: "..kills.."\nDeaths: "..deaths.."\nScore: "..score)
+        end
+
+        local kills = tostring(0)
+        local deaths = tostring(0)
+        local score = tostring(0)
+
+        if ms:get_string(name.."kills") ~= (nil or "") then
+            kills = ms:get_string(name.."kills")
+        end
+        if ms:get_string(name.."deaths") ~= (nil or "") then
+            deaths = ms:get_string(name.."deaths")
+        end
+        if ms:get_string(name.."score") ~= (nil or "") then
+            score = ms:get_string(name.."score")
+        end
+
+        minetest.chat_send_player(name, "Stats of "..minetest.colorize(PVP.team_color(name), name).." are:\nKills: "..kills.."\nDeaths: "..deaths.."\nScore: "..score)
+    end
+});
