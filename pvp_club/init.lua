@@ -248,16 +248,16 @@ end
 
 mt.register_on_joinplayer(function (player)
     player:set_properties({
-        hp_max = 100,
+        hp_max = 60,
     })
-    player:set_hp(100)
+    player:set_hp(60)
 end)
 
 mt.register_on_respawnplayer(function (player)
     player:set_properties({
-        hp_max = 100,
+        hp_max = 60,
     })
-    player:set_hp(100)
+    player:set_hp(60)
 end)
 
 minetest.register_chatcommand("stats", {
