@@ -22,9 +22,9 @@ PVP.spawn = {
     h = 20,
     immunity_time = 12, --time in seconds
     pos = {
-        x = 1516,
-        y = 20,
-        z = -28536
+        x = 1841,
+        y = 2,
+        z = -1061
     },
 }
 
