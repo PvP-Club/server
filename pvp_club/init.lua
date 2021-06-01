@@ -191,6 +191,11 @@ mt.register_on_dieplayer(function (player, reason)
 	if not reason.object:is_player() then
 	    local deaths = tonumber(ms:get_string(player:get_player_name().."deaths")) or 0
             ms:set_string(player:get_player_name().."deaths", tostring(deaths + 1))
+            local function resolver(name)
+            	local deaths = tonumber(ms:get_string(name.."deaths"))
+            	ms:set_string(name.."deaths", deaths - 1)
+            end
+            resolver(player:get_player_name())
 	    return
 	end
         local kills = tonumber(ms:get_string(reason.object:get_player_name().."kills")) or 0
