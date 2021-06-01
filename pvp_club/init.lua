@@ -8,14 +8,16 @@ PVP.team_colors = {
     blue = "#0000FF",
     yellow = "#FFFF00",
     green = "#64f20b",
-    red = "#e32727"
+    red = "#e32727",
+    aqua = "#00f1ff"
 }
 PVP.teams = {
     test = {"Test1"},
-    red = {"clownwolf", "FranzJoseph", "Beta", "Rtx", "-cigarette-", "kitty02", "Elvis26", "Arceus", "danicoo"},
-    blue = {"TenPlusTwo", "Darkf4antom", "AnthonyDe", "SoulSeeker", "JediKnight", "Gladius", "Xenon", "liverpool", "5uper1ach", "PantsMan"},
+    red = {"clownwolf", "FranzJoseph", "Beta", "Rtx", "-cigarette-", "kitty02", "Elvis26", "danicoo", "Liberty45"},
+    blue = {"TenPlusTwo", "Darkf4antom", "AnthonyDe", "SoulSeeker", "JediKnight", "Gladius", "Xenon", "5uper1ach", "PantsMan"},
     yellow = {"-lipop-", "minetest", "j45", "RUBIUSOMG11", "cephalotus", "Amine35", "realyg", "popidog_assaillant", "Elyas_Crack", "Luis_Mi"},
-    green = {"DiamondPlane", "gameit", "end", "Skyisblue", "-CrocMoney-", "N4xQ", "LuaFrank", "Code-Sploit", "winniepee0", "The_World"}
+    green = {"DiamondPlane", "gameit", "end", "Skyisblue", "-CrocMoney-", "N4xQ", "LuaFrank", "Code-Sploit", "winniepee0", "The_World"},
+    aqua = {"Elvis26", "liverpool"}
 }
 PVP.spawn = {
     r = 20,
@@ -81,8 +83,8 @@ mt.register_on_joinplayer(function(player, n)
                 player:set_nametag_attributes(props)
                 immune_players[player:get_player_name()] = PVP.spawn.immunity_time
                 minetest.after(0,function(player)
-                    player:hud_set_hotbar_image("pvp_club_hotbar_"..PVP.get_team(player:get_player_name())..".png")
-                    player:hud_set_hotbar_selected_image("pvp_club_hotbar_selected_"..PVP.get_team(player:get_player_name())..".png")
+                    -- player:hud_set_hotbar_image("pvp_club_hotbar_"..PVP.get_team(player:get_player_name())..".png")
+                    -- player:hud_set_hotbar_selected_image("pvp_club_hotbar_selected_"..PVP.get_team(player:get_player_name())..".png")
                 end,player)
                 return
             end
