@@ -187,27 +187,19 @@ minetest.register_on_newplayer(function (player)
 end)
 
 mt.register_on_dieplayer(function (player, reason)
-    if reason.type == "punch" then
-	if not reason.object:is_player() then
-	    local deaths = tonumber(ms:get_string(player:get_player_name().."deaths")) or 0
-            ms:set_string(player:get_player_name().."deaths", tostring(deaths + 1))
-            local function resolver(name)
-            	local deaths = tonumber(ms:get_string(name.."deaths"))
-            	ms:set_string(name.."deaths", deaths - 1)
-            end
-            resolver(player:get_player_name())
-	    return
-	end
-        local kills = tonumber(ms:get_string(reason.object:get_player_name().."kills")) or 0
-        local deaths = tonumber(ms:get_string(player:get_player_name().."deaths")) or 0
-	local score = tonumber(ms:get_string(reason.object:get_player_name().."score")) or 0
-        ms:set_string(reason.object:get_player_name().."kills", tostring(kills + 1))
-        ms:set_string(player:get_player_name().."deaths", tostring(deaths + 1))
-	ms:set_string(reason.object:get_player_name().."score", tostring(score + 10))
-	mt.chat_send_all(mt.colorize(PVP.team_color(reason.object:get_player_name()), reason.object:get_player_name())..mt.colorize("#FF0000", " has killed ")..mt.colorize(PVP.team_color(player:get_player_name()), player:get_player_name()))
-    else
-        local deaths = tonumber(ms:get_string(player:get_player_name().."deaths")) or 0
-        ms:set_string(player:get_player_name().."deaths", tostring(deaths + 1))
+    local name = player:get_player_name()
+    local deaths = tonumber(ms:get_string(name.."deaths"))
+    ms:set_string(name.."deaths", tostring(deaths + 1))
+end)
+
+minetest.register_on_dieplayer(function (player, reason)
+    if (reason.type == "punch") and reason.object:is_player() then
+        local name = reason.object:get_player_name()
+        local kills = tonumber(ms:get_string(name.."kills"))
+        ms:set_string(name.."kills", tostring(kills + 1))
+        local victim = minetest.colorize(PVP.team_color(player:get_player_name()), player:get_player_name())
+        local attacker = minetest.colorize(PVP.team_color(name), name)
+        minetest.chat_send_all(attacker.." has killed "..victim)
     end
 end)
 
