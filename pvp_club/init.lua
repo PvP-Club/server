@@ -240,7 +240,7 @@ mt.register_chatcommand("reset_stats", {
 	            ms:set_string(name.."score", tostring(0))
 		    return true, "Stats of "..param.." are successfully reset."
 		else
-		    return true, "No such players called \""..param.."\"."
+		    return true, "No such players called "..param.."."
 		end
 	    else
 		return true, "Missing Permissions! (privs required: server)"
