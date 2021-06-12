@@ -262,7 +262,6 @@ mt.register_on_joinplayer(function (player)
     player:set_properties({
         hp_max = 60,
     })
-    player:set_hp(60)
 end)
 
 mt.register_on_respawnplayer(function (player)
