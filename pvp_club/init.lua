@@ -83,8 +83,8 @@ mt.register_on_joinplayer(function(player, n)
                 player:set_nametag_attributes(props)
                 immune_players[player:get_player_name()] = PVP.spawn.immunity_time
                 minetest.after(0,function(player)
-                    -- player:hud_set_hotbar_image("pvp_club_hotbar_"..PVP.get_team(player:get_player_name())..".png")
-                    -- player:hud_set_hotbar_selected_image("pvp_club_hotbar_selected_"..PVP.get_team(player:get_player_name())..".png")
+                    player:hud_set_hotbar_image("gui_hotbar.png^[colorize:"..PVP.team_color(player:get_player_name())..":160")
+                    player:hud_set_hotbar_selected_image("gui_hotbar_selected.png^[colorize:"..PVP.team_color(player:get_player_name())..":160")
                 end,player)
                 return
             end
