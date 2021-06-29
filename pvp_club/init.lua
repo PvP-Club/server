@@ -205,6 +205,9 @@ mt.register_on_dieplayer(function (player, reason)
         ms:set_string(player:get_player_name().."deaths", tostring(deaths + 1))
 	ms:set_string(reason.object:get_player_name().."score", tostring(score + 10))
 	mt.chat_send_all(mt.colorize(PVP.team_color(reason.object:get_player_name()), reason.object:get_player_name())..mt.colorize("#FF0000", " has killed ")..mt.colorize(PVP.team_color(player:get_player_name()), player:get_player_name()))
+	if minetest.get_modpath("irc") then
+		irc.say(irc.config.channel, reason.object:get_player_name() .. " has killed " .. player:get_player_name())
+	end
     else
         local deaths = tonumber(ms:get_string(player:get_player_name().."deaths")) or 0
         ms:set_string(player:get_player_name().."deaths", tostring(deaths + 1))
