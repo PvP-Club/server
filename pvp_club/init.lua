@@ -225,22 +225,30 @@ mt.register_chatcommand("tchat", {
     end
 })
 
-mt.register_chatcommand("rplayer", {
-    privs = {
-        server = true,
-    },
-    description = "Used to clear player stats. /rplayer <name>",
-    func = function(name, param)
-        if param == "" then
-            return true, "Try: \n/rplayer <name>"
-        end
-        if PVP.get_team(param) then
-            ms:set_string(param.."kills", tostring(0))
-            ms:set_string(param.."deaths", tostring(0))
-	    ms:set_string(param.."score", tostring(0))
-            return true, param.."'s stats have been reset."
-        end
-        return true, "["..param.."] is not a player!"
+mt.register_chatcommand("reset_stats", {
+    privs = {interact = true,},
+    description = "Used to clear the statistics(stats) of a player.",
+    func = function (name, param)
+	if param:len() < 1 then
+	    ms:set_string(name.."kills", tostring(0))
+	    ms:set_string(name.."deaths", tostring(0))
+	    ms:set_string(name.."score", tostring(0))
+	    return true, "Stats of "..name.." are successfully reset."
+	else
+	    local can_reset_stats = minetest.check_player_privs(name, { server = true })
+	    if can_reset_stats then
+		    if table.includes(PVP.players, param) then
+	    	        ms:set_string(param.."kills", tostring(0))
+	                ms:set_string(param.."deaths", tostring(0))
+	                ms:set_string(param.."score", tostring(0))
+		            return true, "Stats of "..param.." are successfully reset."
+		        else
+		            return true, "No such player called \""..param.."\"."
+		        end
+	        else
+		        return true, "Missing Permissions! (priv required: server)"
+	        end
+	    end
     end
 })
 
