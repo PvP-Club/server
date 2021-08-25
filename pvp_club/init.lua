@@ -14,9 +14,9 @@ PVP.team_colors = {
 PVP.teams = {
     test = {"Test1"},
     red = {"clownwolf", "FranzJoseph", "Beta", "kitty02"},
-    blue = {"TenPlusTwo", "Darkf4antom", "AnthonyDe", "SoulSeeker", "JediKnight", "Gladius", "Xenon", "5uper1ach", "PantsMan", "liverpool", "The_World"},
-    yellow = {"-lipop-", "minetest", "j45", "RUBIUSOMG11", "cephalotus", "Amine35", "realyg", "popidog_assaillant", "Elyas_Crack", "Luis_Mi"},
-    green = {"DiamondPlane", "gameit", "end", "Skyisblue", "-CrocMoney-", "N4xQ", "LuaFrank", "Code-Sploit", "winniepee0"},
+    blue = {"TenPlusTwo", "Darkf4antom", "AnthonyDe", "JediKnight", "Gladius", "Xenon", "5uper1ach", "PantsMan", "liverpool", "The_World"},
+    yellow = {"-lipop-", "minetest", "j45", "cephalotus", "Amine35", "popidog_assaillant", "Elyas_Crack", "Luis_Mi"},
+    green = {"DiamondPlane", "gameit", "end", "Skyisblue", "-CrocMoney-", "N4xQ", "LuaFrank", "Code-Sploit"},
     aqua = {"Elvis26", "danicoo"}
 }
 PVP.spawn = {
